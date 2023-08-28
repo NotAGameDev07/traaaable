@@ -53,8 +53,9 @@ async def joke(ctx):
 async def filetest(ctx):
 	await ctx.send(file=discord.File("invite_link.txt"))
 
-# test right here
+# this right here works, but is disabled for now
 
+""" 
 @bot.listen()
 async def on_message(message):
 	if str(message.content).startswith(CMD_PREFIX):
@@ -63,6 +64,7 @@ async def on_message(message):
 		return
 	print(message.content)
 	await message.channel.send(message.content)
+ """
 
 #make sure to have your own folder of images, edit this in boykisser.py
 
