@@ -33,7 +33,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
 @bot.command()
-async def help(ctx, *command):
+async def helpp(ctx, *command):
 	commands = [
 		"getmeme",
 		"rickroll",
