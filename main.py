@@ -54,8 +54,8 @@ async def filetest(ctx):
 
 #make sure to have your own folder of images, edit this in boykisser.py
 
-@bot.command()
-async def boykisser(ctx):
+@bot.command(name="boykisser")
+async def _boykisser(ctx):
 	await ctx.send(file=discord.File(random.choice(boykisser.get_boykissers())))
 
 bot.run(TOKEN)
