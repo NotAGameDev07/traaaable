@@ -51,7 +51,7 @@ async def help(ctx, *command):
 		"Sends a random boykisser gif"
 	]
 	if len(command) == 0:
-		await ctx.send("do `>help more` for more info from help")
+		await ctx.send(f"do `{CMD_PREFIX}help more` for more info from help")
 		await ctx.send(f"Available commands: {', '.join(commands)}")
 	if command[0] == "more":
 		embed = discord.Embed(
@@ -61,7 +61,7 @@ async def help(ctx, *command):
 		)
 		embed.add_field(name="Available commands:", value=f"{', '.join(commands)}")
 		for (i, j) in zip(commands, infos):
-			embed.add_field(name=i, value=infos, inline=False)
+			embed.add_field(name=i, value=j, inline=False)
 		embed.set_author(name="Traaaable", icon_url="https://th.bing.com/th/id/OIP.V3nxXA_MHlYrbYIyhqPpxQHaJv?pid=ImgDet&rs=1")
 		await ctx.send(embed=embed)
 
