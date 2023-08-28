@@ -35,57 +35,47 @@ bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 bot.remove_command('help')
 
 @bot.command()
-async def help(ctx, *command):
+async def help(ctx):
 	commands = [
 		"getmeme",
 		"rickroll",
 		"joke",
-        "filetest",
-        "boykisser"
+		"filetest",
+		"boykisser"
 	]
-	infos = [
-		"Sends a random meme from meme-api.com",
-		"Sends a rickroll gif",
-		"Sends a random joke",
-		"Placeholder file test",
-		"Sends a random boykisser gif"
-	]
-	if len(command) == 0:
-		await ctx.send(f"do `{CMD_PREFIX}help more` for more info from help")
-		await ctx.send(f"Available commands: {', '.join(commands)}")
-		return
-	if command[0] == "more":
-		embed = discord.Embed(
-			title = "Commands:",
-            description = "These are the more commands you can use",
-            color = discord.Color.blue()
-		)
-		embed.add_field(name="Available commands:", value=f"{', '.join(commands)}")
-		for (i, j) in zip(commands, infos):
-			embed.add_field(name=i, value=j, inline=False)
-		embed.set_author(name="Traaaable", icon_url="https://th.bing.com/th/id/OIP.V3nxXA_MHlYrbYIyhqPpxQHaJv?pid=ImgDet&rs=1")
-		await ctx.send(embed=embed)
-		return
+	await ctx.reply(f"Available commands: {', '.join([f'`{i}`' for i in commands])}\n Do `{CMD_PREFIX}<command> help` where `<command>` is a listed command for more info on a specific command")
 
 @bot.command()
-async def getmeme(ctx):
+async def getmeme(ctx, helpflag: str = ""):
+	if helpflag == "help":
+		await ctx.send("Sends a random meme from meme-api.com, specifically the title and image")
+		return
 	content = requests.get("https://meme-api.com/gimme").json()
 	message = f"{content['title']}\n{content['url']}"
-	await ctx.send(message)
+	await ctx.reply(message)
 
 @bot.command()
-async def rickroll(ctx):
+async def rickroll(ctx, helpflag: str = ""):
+	if helpflag == "help":
+		await ctx.reply("Sends a rickroll gif")
+		return
 	await ctx.send("https://c.tenor.com/o656qFKDzeUAAAAM/rick-astley-never-gonna-give-you-up.gif")
 	await asyncio.sleep(2)
-	await ctx.send("Never gonna give you up")
+	await ctx.reply("Never gonna give you up")
 
 @bot.command()
-async def joke(ctx):
+async def joke(ctx, helpflag: str = ""):
+	if helpflag == "help":
+		await ctx.reply("Sends a random joke")
+		return
 	message = jokes.random_joke()
-	await ctx.send(message['Prompt'] + "\n\n" + message['Answer'] + "\n\n" + message['Credit'])
+	await ctx.reply(message['Prompt'] + "\n\n" + message['Answer'] + "\n\n" + message['Credit'])
 
 @bot.command()
-async def filetest(ctx):
+async def filetest(ctx, helpflag: str = ""):
+	if helpflag:
+		await ctx.reply("TEST DEV CMD, sends a text file containing the bot's invite link")
+		return
 	await ctx.send(file=discord.File("invite_link.txt"))
 
 # this right here works, but is disabled for now
@@ -101,10 +91,13 @@ async def on_message(message):
 	await message.channel.send(message.content)
  """
 
-#make sure to have your own folder of images, edit this in boykisser.py
+#make sure to have your own folder of images, edit the path of the images that the script in boykisser.py searches for in boykisser.py
 
 @bot.command(name="boykisser")
-async def _boykisser(ctx):
+async def _boykisser(ctx, helpflag: str = ""):
+	if helpflag == "help":
+		await ctx.reply("Sends a random boykisser")
+		return
 	await ctx.send(file=discord.File(random.choice(boykisser.get_boykissers())))
 
 bot.run(TOKEN)
