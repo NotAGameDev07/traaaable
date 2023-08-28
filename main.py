@@ -100,4 +100,6 @@ async def _boykisser(ctx, helpflag: str = ""):
 		return
 	await ctx.send(file=discord.File(random.choice(boykisser.get_boykissers())))
 
+print(bot.is_ready())
+
 bot.run(TOKEN)
