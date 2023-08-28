@@ -56,6 +56,8 @@ async def filetest(ctx):
 
 @bot.listen()
 async def on_message(message):
+	if message.author == bot.user:
+		return
 	print(message.content)
 	await message.channel.send(message.content)
 
