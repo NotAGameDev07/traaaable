@@ -26,10 +26,11 @@ import jokes
 import boykisser
 
 TOKEN = open("TOKEN").read()
+CMD_PREFIX = ">"
 
 intents = discord.Intents.all()
 intents.message_content = True
-bot = commands.Bot(command_prefix=">", intents=intents)
+bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
 @bot.command()
 async def getmeme(ctx):
@@ -56,6 +57,8 @@ async def filetest(ctx):
 
 @bot.listen()
 async def on_message(message):
+	if str(message.content).startswith(CMD_PREFIX):
+		return
 	if message.author == bot.user:
 		return
 	print(message.content)
