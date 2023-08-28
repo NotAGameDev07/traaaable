@@ -26,14 +26,16 @@ import jokes
 import boykisser
 
 TOKEN = open("TOKEN").read()
-CMD_PREFIX = ">"
+CMD_PREFIX = "&"
 
 intents = discord.Intents.all()
 intents.message_content = True
 bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
+bot.remove_command('help')
+
 @bot.command()
-async def helpp(ctx, *command):
+async def help(ctx, *command):
 	commands = [
 		"getmeme",
 		"rickroll",
