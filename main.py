@@ -53,6 +53,7 @@ async def help(ctx, *command):
 	if len(command) == 0:
 		await ctx.send(f"do `{CMD_PREFIX}help more` for more info from help")
 		await ctx.send(f"Available commands: {', '.join(commands)}")
+		return
 	if command[0] == "more":
 		embed = discord.Embed(
 			title = "Commands:",
@@ -64,6 +65,7 @@ async def help(ctx, *command):
 			embed.add_field(name=i, value=j, inline=False)
 		embed.set_author(name="Traaaable", icon_url="https://th.bing.com/th/id/OIP.V3nxXA_MHlYrbYIyhqPpxQHaJv?pid=ImgDet&rs=1")
 		await ctx.send(embed=embed)
+		return
 
 @bot.command()
 async def getmeme(ctx):
