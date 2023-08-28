@@ -52,6 +52,13 @@ async def joke(ctx):
 async def filetest(ctx):
 	await ctx.send(file=discord.File("invite_link.txt"))
 
+# test right here
+
+@bot.listen()
+async def on_message(message):
+	print(message.content)
+	await message.channel.send(message.content)
+
 #make sure to have your own folder of images, edit this in boykisser.py
 
 @bot.command(name="boykisser")
