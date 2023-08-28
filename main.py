@@ -61,7 +61,7 @@ async def helpp(ctx, *command):
 		for (i, j) in zip(commands, infos):
 			embed.add_field(name=i, value=infos, inline=False)
 		embed.set_author(name="Traaaable", icon_url="https://th.bing.com/th/id/OIP.V3nxXA_MHlYrbYIyhqPpxQHaJv?pid=ImgDet&rs=1")
-		await ctx.respond(embed=embed)
+		await ctx.send(embed=embed)
 
 @bot.command()
 async def getmeme(ctx):
