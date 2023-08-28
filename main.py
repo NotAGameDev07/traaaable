@@ -33,6 +33,37 @@ intents.message_content = True
 bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
 @bot.command()
+async def help(ctx, *command):
+	commands = [
+		"getmeme",
+		"rickroll",
+		"joke",
+        "filetest",
+        "boykisser"
+	]
+	infos = [
+		"Sends a random meme from meme-api.com",
+		"Sends a rickroll gif",
+		"Sends a random joke",
+		"Placeholder file test",
+		"Sends a random boykisser gif"
+	]
+	if len(command) == 0:
+		await ctx.send("do `>help more` for more info from help")
+		await ctx.send(f"Available commands: {', '.join(commands)}")
+	if command[0] == "more":
+		embed = discord.Embed(
+			title = "Commands:",
+            description = "These are the more commands you can use",
+            color = discord.Color.blue()
+		)
+		embed.add_field(name="Available commands:", value=f"{', '.join(commands)}")
+		for (i, j) in zip(commands, infos):
+			embed.add_field(name=i, value=infos, inline=False)
+		embed.set_author(name="Traaaable", icon_url="https://th.bing.com/th/id/OIP.V3nxXA_MHlYrbYIyhqPpxQHaJv?pid=ImgDet&rs=1")
+		await ctx.respond(embed=embed)
+
+@bot.command()
 async def getmeme(ctx):
 	content = requests.get("https://meme-api.com/gimme").json()
 	message = f"{content['title']}\n{content['url']}"
