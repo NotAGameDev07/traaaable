@@ -109,4 +109,11 @@ async def homedepot(ctx, helpflag: str = ""):
 		return
 	await ctx.send("https://corporate.homedepot.com/sites/default/files/image_gallery/THD_logo.jpg")
 
+@bot.command()
+async def seven(ctx, helpflag: str = ""):
+	if helpflag == "help":
+		await ctx.reply("Sends a seven")
+		return
+	await ctx.send("https://static.wikia.nocookie.net/halo/images/a/ac/VWNUM7.jpg/revision/latest?cb=20080312043203")
+
 bot.run(TOKEN)
