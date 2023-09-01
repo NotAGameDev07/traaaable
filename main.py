@@ -100,6 +100,13 @@ async def _boykisser(ctx, helpflag: str = ""):
 		return
 	await ctx.send(file=discord.File(random.choice(boykisser.get_boykissers())))
 
-print(bot.is_ready())
+# end of the boykissing
+
+@bot.command()
+async def homedepot(ctx, helpflag: str = ""):
+	if helpflag == "help":
+		await ctx.reply("Sends the Home Depot logo")
+		return
+	await ctx.send("https://corporate.homedepot.com/sites/default/files/image_gallery/THD_logo.jpg")
 
 bot.run(TOKEN)
