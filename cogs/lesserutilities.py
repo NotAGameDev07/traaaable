@@ -13,7 +13,7 @@ class Utilities(commands.Cog):
 		"""Sends a random meme"""
 		content = requests.get("https://meme-api.com/gimme").json()
 		message = f"{content['title']}\n{content['url']}"
-		await ctx.reply(message)
+		await ctx.respond(message)
 
 	@commands.slash_command(description="Sends a random joke")
 	async def joke(self, ctx):
