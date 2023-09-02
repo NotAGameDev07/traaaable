@@ -41,10 +41,12 @@ for cog in cogslist:
 	bot.load_extension(f"cogs.{cog}")
 
 @bot.command()
+@commands.is_owner()
 async def reload_cogs(ctx):
 	global bot
 	for cog in cogslist:
 		bot.reload_extension(f"cogs.{cog}")
+		await ctx.send(f"Successfully reloaded cogs.{cog}!")
 
 # this right here works, but is disabled for now
 
