@@ -16,19 +16,19 @@ class Fun_Commands(commands.Cog):
 	@commands.slash_command(description="Sends the Home Depot logo")
 	async def homedepot(self, ctx):
 		"""Sends the Home Depot logo"""
-		await ctx.send("https://corporate.homedepot.com/sites/default/files/image_gallery/THD_logo.jpg")
+		await ctx.respond("https://corporate.homedepot.com/sites/default/files/image_gallery/THD_logo.jpg")
 
 	@commands.slash_command(description="Sends a 7 (seven)")
 	async def seven(self, ctx):
 		"""Sends a 7 (seven)"""
-		await ctx.send("https://static.wikia.nocookie.net/halo/images/a/ac/VWNUM7.jpg/revision/latest?cb=20080312043203")
+		await ctx.respond("https://static.wikia.nocookie.net/halo/images/a/ac/VWNUM7.jpg/revision/latest?cb=20080312043203")
 
 	@commands.slash_command(description="Sends a rickroll")
 	async def rickroll(self, ctx):
 		"""Sends a rickroll"""
 		await ctx.send("https://c.tenor.com/o656qFKDzeUAAAAM/rick-astley-never-gonna-give-you-up.gif")
 		await asyncio.sleep(2)
-		await ctx.reply("Never gonna give you up")
+		await ctx.respond("Never gonna give you up")
 
 def setup(bot):
 	bot.add_cog(Fun_Commands(bot))
