@@ -23,7 +23,6 @@ import asyncio
 from discord.ext import commands
 
 import jokes
-import funcommands
 
 TOKEN = open("TOKEN").read()
 CMD_PREFIX = "&"
