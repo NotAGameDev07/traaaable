@@ -11,7 +11,7 @@ class Fun_Commands(commands.Cog):
 	@commands.slash_command(name="boykisser", description="Sends a random boykisser")
 	async def _boykisser(self, ctx):
 		"""Sends a random boykisser"""
-		await ctx.send(file=discord.File(random.choice(boykisser.get_boykissers())))
+		await ctx.respond(file=discord.File(random.choice(boykisser.get_boykissers())))
 
 	# end of the boykissing
 
