@@ -1,5 +1,6 @@
 import requests
 import boykisser
+import jokes
 import discord
 from discord.ext import commands
 
