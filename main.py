@@ -51,37 +51,6 @@ async def reload_cogs(ctx):
 		bot.reload_extension(f"cogs.{cog}")
 		await ctx.send(f"Successfully reloaded `cogs.{cog}`!")
 
-print(bot.commands)
-
-@bot.slash_command(name="help", description="Get some help.")
-async def help(ctx, args: Option(str, required=False)):
-	help_embed = discord.Embed(title="My Bot's Help!")
-	command_names_list = [x.name for x in bot.commands]
-	if not args:
-		help_embed.add_field(
-			name="List of supported commands:",
-			value="\n".join([str(i+1)+". "+x.name for i,
-						x in enumerate(bot.commands)]),
-			inline=False
-		)
-		help_embed.add_field(
-			name="Details",
-			value="Type `/help <command name>` for more details about each command.",
-			inline=False
-		)
-
-	elif args in command_names_list:
-		help_embed.add_field(
-			name=args,
-			value=bot.get_command(args).description
-		)
-	else:
-		help_embed.add_field(
-			name="Oh, no!",
-			value="I didn't find command :("
-		)
-	await ctx.respond(embed=help_embed)
-
 # this right here works, but is disabled for now
 
 """ 
