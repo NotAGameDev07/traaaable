@@ -7,7 +7,7 @@ class Fun_Commands(commands.Cog):
 	#make sure to have your own folder of images, edit the path of the images that the script in boykisser.py searches for in boykisser.py
 
 	@commands.slash_command(name="boykisser", description="Sends a random boykisser")
-	async def _boykisser(ctx):
+	async def _boykisser(self, ctx):
 		"""Sends a random boykisser"""
 		await ctx.send(file=discord.File(random.choice(boykisser.get_boykissers())))
 
