@@ -14,7 +14,7 @@ class Utilities(commands.Cog):
 		message = f"{content['title']}\n{content['url']}"
 		await ctx.reply(message)
 
-	@commands.command(description="Sends a random joke")
+	@commands.slash_command(description="Sends a random joke")
 	async def joke(self, ctx):
 		"""Sends a random joke"""
 		message = jokes.random_joke()
