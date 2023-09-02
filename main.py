@@ -61,6 +61,4 @@ async def on_message(message):
 	await message.channel.send(message.content)
  """
 
-print(bot.commands)
-
 bot.run(TOKEN)
