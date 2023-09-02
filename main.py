@@ -32,10 +32,6 @@ intents = discord.Intents.all()
 intents.message_content = True
 bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
-@bot.event
-async def on_ready():
-	bot.add_cog(funcommands.FunnyCommandsCog())
-
 @bot.command()
 async def getmeme(ctx, helpflag: str = ""):
 	if helpflag == "help":
@@ -59,6 +55,13 @@ async def filetest(ctx, helpflag: str = ""):
 		await ctx.reply("TEST DEV CMD, sends a text file containing the bot's invite link")
 		return
 	await ctx.send(file=discord.File("invite_link.txt"))
+
+cogslist = [
+	"funcommands",
+]
+
+for cog in cogslist:
+	bot.load_extension(f"cogs.{cog}")
 
 # this right here works, but is disabled for now
 

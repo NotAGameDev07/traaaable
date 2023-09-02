@@ -2,7 +2,7 @@ import boykisser
 import discord
 from discord.ext import commands
 
-class FunnyCommandsCog(commands.Cog):
+class Fun_Commands(commands.Cog):
 	"""just some funny commands"""
 	#make sure to have your own folder of images, edit the path of the images that the script in boykisser.py searches for in boykisser.py
 
@@ -29,3 +29,6 @@ class FunnyCommandsCog(commands.Cog):
 		await ctx.send("https://c.tenor.com/o656qFKDzeUAAAAM/rick-astley-never-gonna-give-you-up.gif")
 		await asyncio.sleep(2)
 		await ctx.reply("Never gonna give you up")
+
+def setup(bot):
+	bot.add_cog(Fun_Commands(bot))
