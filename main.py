@@ -29,7 +29,7 @@ CMD_PREFIX = "&"
 
 intents = discord.Intents.all()
 intents.message_content = True
-bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents, debug_guilds=[835505638318276648])
+bot = commands.Bot(intents=intents, debug_guilds=[835505638318276648])
 
 
 cogslist = [
