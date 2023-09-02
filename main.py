@@ -34,7 +34,7 @@ bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
 @bot.event
 async def on_ready():
-	bot.add_cog(funcommands.FunnyCommandsCogs())
+	bot.add_cog(funcommands.FunnyCommandsCog())
 
 @bot.command()
 async def getmeme(ctx, helpflag: str = ""):
