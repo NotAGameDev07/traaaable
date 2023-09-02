@@ -31,31 +31,8 @@ intents = discord.Intents.all()
 intents.message_content = True
 bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
-@bot.command()
-async def getmeme(ctx, helpflag: str = ""):
-	if helpflag == "help":
-		await ctx.send("Sends a random meme from meme-api.com, specifically the title and image")
-		return
-	content = requests.get("https://meme-api.com/gimme").json()
-	message = f"{content['title']}\n{content['url']}"
-	await ctx.reply(message)
-
-@bot.command()
-async def joke(ctx, helpflag: str = ""):
-	if helpflag == "help":
-		await ctx.reply("Sends a random joke")
-		return
-	message = jokes.random_joke()
-	await ctx.reply(message['Prompt'] + "\n\n" + message['Answer'] + "\n\n" + message['Credit'])
-
-@bot.command()
-async def filetest(ctx, helpflag: str = ""):
-	if helpflag:
-		await ctx.reply("TEST DEV CMD, sends a text file containing the bot's invite link")
-		return
-	await ctx.send(file=discord.File("invite_link.txt"))
-
 cogslist = [
+	"lesserutilities",
 	"funcommands",
 ]
 
