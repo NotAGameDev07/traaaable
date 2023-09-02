@@ -29,8 +29,9 @@ CMD_PREFIX = "/"
 
 intents = discord.Intents.all()
 intents.message_content = True
-bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents, debug_guilds=[835505638318276648])
+bot = commands.Bot(intents=intents, debug_guilds=[835505638318276648])
 
+bot.remove_command('help')
 
 cogslist = [
 	"lesserutilities",
@@ -40,7 +41,7 @@ cogslist = [
 for cog in cogslist:
 	bot.load_extension(f"cogs.{cog}")
 
-@bot.command(description="Reloads all modules")
+@bot.slash_command(description="Reloads all modules")
 @commands.is_owner()
 async def reload_cogs(ctx):
 	"""Reloads all modules"""
@@ -48,6 +49,35 @@ async def reload_cogs(ctx):
 	for cog in cogslist:
 		bot.reload_extension(f"cogs.{cog}")
 		await ctx.send(f"Successfully reloaded `cogs.{cog}`!")
+
+@bot.slash_command(name="help", description="Get some help.")
+async def help(ctx, args: Option(str, required=False)):
+	help_embed = discord.Embed(title="My Bot's Help!")
+	command_names_list = [x.name for x in bot.commands]
+	if not args:
+		help_embed.add_field(
+			name="List of supported commands:",
+			value="\n".join([str(i+1)+". "+x.name for i,
+						x in enumerate(bot.commands)]),
+			inline=False
+		)
+		help_embed.add_field(
+			name="Details",
+			value="Type `/help <command name>` for more details about each command.",
+			inline=False
+		)
+
+	elif args in command_names_list:
+		help_embed.add_field(
+			name=args,
+			value=bot.get_command(args).description
+		)
+	else:
+		help_embed.add_field(
+			name="Oh, no!",
+			value="I didn't find command :("
+		)
+	await ctx.respond(embed=help_embed)
 
 # this right here works, but is disabled for now
 
