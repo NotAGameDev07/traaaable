@@ -13,17 +13,17 @@ class FunnyCommandsCog(commands.Cog):
 
 	# end of the boykissing
 
-	@bot.command()
+	@commands.command()
 	async def homedepot(ctx):
 		"""Sends the Home Depot logo"""
 		await ctx.send("https://corporate.homedepot.com/sites/default/files/image_gallery/THD_logo.jpg")
 
-	@bot.command()
+	@commands.command()
 	async def seven(ctx):
 		"""Sends a 7 (seven)"""
 		await ctx.send("https://static.wikia.nocookie.net/halo/images/a/ac/VWNUM7.jpg/revision/latest?cb=20080312043203")
 
-	@bot.command()
+	@commands.command()
 	async def rickroll(ctx):
 		"""Sends a rickroll"""
 		await ctx.send("https://c.tenor.com/o656qFKDzeUAAAAM/rick-astley-never-gonna-give-you-up.gif")
