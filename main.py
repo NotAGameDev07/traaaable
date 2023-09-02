@@ -23,7 +23,7 @@ import asyncio
 from discord.ext import commands
 
 import jokes
-import boykisser
+import funcommands
 
 TOKEN = open("TOKEN").read()
 CMD_PREFIX = "&"
@@ -32,18 +32,9 @@ intents = discord.Intents.all()
 intents.message_content = True
 bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
-bot.remove_command('help')
-
-@bot.command()
-async def help(ctx):
-	commands = [
-		"getmeme",
-		"rickroll",
-		"joke",
-		"filetest",
-		"boykisser"
-	]
-	await ctx.reply(f"Available commands: {', '.join([f'`{i}`' for i in commands])}\n Do `{CMD_PREFIX}<command> help` where `<command>` is a listed command for more info on a specific command")
+@bot.event
+async def on_ready():
+	bot.add_cog(funcommands.FunnyCommandsCogs())
 
 @bot.command()
 async def getmeme(ctx, helpflag: str = ""):
@@ -53,15 +44,6 @@ async def getmeme(ctx, helpflag: str = ""):
 	content = requests.get("https://meme-api.com/gimme").json()
 	message = f"{content['title']}\n{content['url']}"
 	await ctx.reply(message)
-
-@bot.command()
-async def rickroll(ctx, helpflag: str = ""):
-	if helpflag == "help":
-		await ctx.reply("Sends a rickroll gif")
-		return
-	await ctx.send("https://c.tenor.com/o656qFKDzeUAAAAM/rick-astley-never-gonna-give-you-up.gif")
-	await asyncio.sleep(2)
-	await ctx.reply("Never gonna give you up")
 
 @bot.command()
 async def joke(ctx, helpflag: str = ""):
@@ -91,29 +73,5 @@ async def on_message(message):
 	await message.channel.send(message.content)
  """
 
-#make sure to have your own folder of images, edit the path of the images that the script in boykisser.py searches for in boykisser.py
-
-@bot.command(name="boykisser")
-async def _boykisser(ctx, helpflag: str = ""):
-	if helpflag == "help":
-		await ctx.reply("Sends a random boykisser")
-		return
-	await ctx.send(file=discord.File(random.choice(boykisser.get_boykissers())))
-
-# end of the boykissing
-
-@bot.command()
-async def homedepot(ctx, helpflag: str = ""):
-	if helpflag == "help":
-		await ctx.reply("Sends the Home Depot logo")
-		return
-	await ctx.send("https://corporate.homedepot.com/sites/default/files/image_gallery/THD_logo.jpg")
-
-@bot.command()
-async def seven(ctx, helpflag: str = ""):
-	if helpflag == "help":
-		await ctx.reply("Sends a seven")
-		return
-	await ctx.send("https://static.wikia.nocookie.net/halo/images/a/ac/VWNUM7.jpg/revision/latest?cb=20080312043203")
 
 bot.run(TOKEN)
