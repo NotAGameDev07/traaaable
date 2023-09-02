@@ -1,5 +1,6 @@
 import boykisser
 import discord
+import asyncio
 from discord.ext import commands
 
 class Fun_Commands(commands.Cog):
@@ -27,7 +28,6 @@ class Fun_Commands(commands.Cog):
 	async def rickroll(self, ctx):
 		"""Sends a rickroll"""
 		await ctx.send("https://c.tenor.com/o656qFKDzeUAAAAM/rick-astley-never-gonna-give-you-up.gif")
-		await asyncio.sleep(2)
 		await ctx.respond("Never gonna give you up")
 
 def setup(bot):

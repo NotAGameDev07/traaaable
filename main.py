@@ -51,6 +51,8 @@ async def reload_cogs(ctx):
 		bot.reload_extension(f"cogs.{cog}")
 		await ctx.send(f"Successfully reloaded `cogs.{cog}`!")
 
+print(bot.commands)
+
 @bot.slash_command(name="help", description="Get some help.")
 async def help(ctx, args: Option(str, required=False)):
 	help_embed = discord.Embed(title="My Bot's Help!")
