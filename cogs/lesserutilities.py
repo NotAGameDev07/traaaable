@@ -1,3 +1,4 @@
+import requests
 import boykisser
 import discord
 from discord.ext import commands

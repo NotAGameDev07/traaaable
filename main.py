@@ -31,6 +31,7 @@ intents = discord.Intents.all()
 intents.message_content = True
 bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
+
 cogslist = [
 	"lesserutilities",
 	"funcommands",
@@ -38,6 +39,12 @@ cogslist = [
 
 for cog in cogslist:
 	bot.load_extension(f"cogs.{cog}")
+
+@bot.commands()
+async def reload_cogs(ctx):
+	global bot
+	for cog in cogslist:
+		bot.reload_extension(f"cogs.{cog}")
 
 # this right here works, but is disabled for now
 
