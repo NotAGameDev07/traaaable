@@ -40,7 +40,7 @@ cogslist = [
 for cog in cogslist:
 	bot.load_extension(f"cogs.{cog}")
 
-@bot.commands()
+@bot.command()
 async def reload_cogs(ctx):
 	global bot
 	for cog in cogslist:
@@ -59,5 +59,6 @@ async def on_message(message):
 	await message.channel.send(message.content)
  """
 
+print(bot.commands)
 
 bot.run(TOKEN)
