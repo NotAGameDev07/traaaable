@@ -8,20 +8,20 @@ class Utilities(commands.Cog):
 	#make sure to have your own folder of images, edit the path of the images that the script in boykisser.py searches for in boykisser.py
 
 	@commands.command()
-	async def getmeme(ctx, helpflag: str = ""):
+	async def getmeme(ctx):
 		"""Sends a random meme"""
 		content = requests.get("https://meme-api.com/gimme").json()
 		message = f"{content['title']}\n{content['url']}"
-		await ctx.reply(message)
+		await ctx.respond(message)
 
 	@commands.command()
-	async def joke(ctx, helpflag: str = ""):
+	async def joke(ctx):
 		"""Sends a random joke"""
 		message = jokes.random_joke()
-		await ctx.reply(message['Prompt'] + "\n\n" + message['Answer'] + "\n\n" + message['Credit'])
+		await ctx.respond(message['Prompt'] + "\n\n" + message['Answer'] + "\n\n" + message['Credit'])
 
 	@commands.command()
-	async def filetest(ctx, helpflag: str = ""):
+	async def filetest(ctx):
 		"""Sends a file that contains the bot's invite link"""
 		await ctx.send(file=discord.File("invite_link.txt"))
 
