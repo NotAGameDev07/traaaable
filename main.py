@@ -21,6 +21,7 @@ import discord
 import time
 import asyncio
 from discord.ext import commands
+from discord import Option
 
 import jokes
 
