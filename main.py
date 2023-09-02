@@ -29,7 +29,7 @@ CMD_PREFIX = "&"
 
 intents = discord.Intents.all()
 intents.message_content = True
-bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
+bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents, debug_guilds=[835505638318276648])
 
 
 cogslist = [
@@ -40,13 +40,14 @@ cogslist = [
 for cog in cogslist:
 	bot.load_extension(f"cogs.{cog}")
 
-@bot.command()
+@bot.command(description="Reloads all modules")
 @commands.is_owner()
 async def reload_cogs(ctx):
+	"""Reloads all modules"""
 	global bot
 	for cog in cogslist:
 		bot.reload_extension(f"cogs.{cog}")
-		await ctx.send(f"Successfully reloaded cogs.{cog}!")
+		await ctx.send(f"Successfully reloaded `cogs.{cog}`!")
 
 # this right here works, but is disabled for now
 
