@@ -9,7 +9,7 @@ class Utilities(commands.Cog):
 	#make sure to have your own folder of images, edit the path of the images that the script in boykisser.py searches for in boykisser.py
 
 	@commands.slash_command(description="Sends a random meme")
-	async def joke(self, ctx):
+	async def meme(self, ctx):
 		"""Sends a random meme"""
 		content = requests.get("https://meme-api.com/gimme").json()
 		message = f"{content['title']}\n{content['url']}"

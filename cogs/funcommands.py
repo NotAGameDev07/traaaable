@@ -1,5 +1,6 @@
 import boykisser
 import discord
+import random
 import asyncio
 from discord.ext import commands
 
