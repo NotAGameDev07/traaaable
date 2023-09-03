@@ -24,4 +24,4 @@ def get_cheeseburgers():
 	return glob.glob("burger/*")
 
 def get_logs():
-	return glob.glob("logs/*")
+	return glob.glob("log/*")
