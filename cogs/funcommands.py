@@ -19,6 +19,10 @@ class Fun_Commands(commands.Cog):
 	async def cheeseburger(self, ctx):
 		await ctx.respond(file=discord.File(random.choice(filefinder.get_cheeseburgers())))
 
+	@commands.slash_command(description="Sends a Log")
+	async def logs(self, ctx):
+		await ctx.respond(file=discord.File(random.choice(filefinder.get_logs())))
+
 	@commands.slash_command(description="Sends the Home Depot logo")
 	async def homedepot(self, ctx):
 		"""Sends the Home Depot logo"""
