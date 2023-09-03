@@ -24,6 +24,10 @@ class Fun_Commands(commands.Cog):
 	async def seven(self, ctx):
 		"""Sends a 7 (seven)"""
 		await ctx.respond("https://static.wikia.nocookie.net/halo/images/a/ac/VWNUM7.jpg/revision/latest?cb=20080312043203")
+	
+	@commands.slash_command(description="Sends a Cheeseburger")
+	async def cheeseburger(self, ctx):
+		pass
 
 	@commands.slash_command(description="Sends a rickroll")
 	async def rickroll(self, ctx):
