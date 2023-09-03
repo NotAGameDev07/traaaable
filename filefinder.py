@@ -17,5 +17,11 @@
 
 import glob
 
+def get_boykissers():
+	return glob.glob("boykisser/*")
+
 def get_cheeseburgers():
 	return glob.glob("burger/*")
+
+def get_logs():
+	return glob.glob("logs/*")

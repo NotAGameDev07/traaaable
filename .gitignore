@@ -1,4 +1,5 @@
 TOKEN
-boykisser/
-burger/
+boykisser/*
+burger/*
+logs/*
 __pycache__

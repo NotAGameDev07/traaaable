@@ -1,5 +1,4 @@
-import boykisser
-import cheeseburger
+import filefinder
 import discord
 import random
 import asyncio
@@ -12,13 +11,13 @@ class Fun_Commands(commands.Cog):
 	@commands.slash_command(name="boykisser", description="Sends a random boykisser")
 	async def _boykisser(self, ctx):
 		"""Sends a random boykisser"""
-		await ctx.respond(file=discord.File(random.choice(boykisser.get_boykissers())))
+		await ctx.respond(file=discord.File(random.choice(filefinder.get_boykissers())))
 
 	# end of the boykissing
 
 	@commands.slash_command(description="Sends a Cheeseburger")
 	async def cheeseburger(self, ctx):
-		await ctx.respond(file=discord.File(random.choice(cheeseburger.get_cheeseburgers())))
+		await ctx.respond(file=discord.File(random.choice(filefinder.get_cheeseburgers())))
 
 	@commands.slash_command(description="Sends the Home Depot logo")
 	async def homedepot(self, ctx):
