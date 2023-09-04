@@ -15,6 +15,7 @@
 	*/
 """
 
+import os
 import random
 import requests
 import discord
@@ -50,6 +51,17 @@ async def reload_cogs(ctx):
 	for cog in cogslist:
 		bot.reload_extension(f"cogs.{cog}")
 		await ctx.send(f"Successfully reloaded `cogs.{cog}`!")
+	await ctx.respond("done!")
+
+@bot.slash_command(description="Runs system commands")
+@commands.is_owner()
+async def system_cmd(ctx, cmd : str):
+	if ctx.message.author.id != 722191908956405801:
+		await ctx.respond(f"ERROR: Not a bot developer, nice try though XD")
+	"""Runs system commands"""
+	os.system(f"{cmd} > stdout.txt")
+	await ctx.defer()
+	await ctx.respond(file=discord.File("stdout.txt"))
 
 # this right here works, but is disabled for now
 
